@@ -1,0 +1,3 @@
+# Dont use vim
+[core]
+    editor = nano
