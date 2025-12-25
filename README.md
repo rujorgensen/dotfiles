@@ -10,3 +10,6 @@ Install:
 
 Remove the package:
 `rm vscode.deb`
+
+## Lazydocker
+ `curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash`
