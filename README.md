@@ -13,3 +13,5 @@ Remove the package:
 
 ## Lazydocker
  `curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash`
+
+(add `export PATH="$HOME/.local/bin:$PATH"` to .zshrc if it's not there already)
