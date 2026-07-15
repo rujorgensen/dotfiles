@@ -1,0 +1,89 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """
+[](fg:color_dir)\
+$directory\
+${custom.dir_cap}\
+$git_branch\
+$git_state\
+$git_status\
+$fill\
+$cmd_duration\
+$line_break\
+$character"""
+
+palette = 'pastel'
+
+[palettes.pastel]
+color_dir  = '#9A348E'
+color_git  = '#DA627D'
+color_lang = '#FCA17D'
+color_ctx  = '#86BBD8'
+color_time = '#33658A'
+text       = '#f5f5f5'
+
+[fill]
+symbol = " "
+
+[directory]
+style = "bold fg:text bg:color_dir"
+format = "[ $path ]($style)[$read_only]($read_only_style)"
+truncation_length = 3
+truncation_symbol = "…/"
+home_symbol = "󰋜"
+read_only = " 󰌾"
+read_only_style = "fg:#ffd7d7 bg:color_dir"
+
+[directory.substitutions]
+"Desktop/work/project" = "󰆆 project"
+"Documents" = "󰈙 Documents"
+"Downloads" = "󰇚 Downloads"
+"Pictures" = "󰋩 Pictures"
+
+[git_branch]
+symbol = ""
+style = "bg:color_git fg:text"
+format = '[](fg:color_dir bg:color_git)[ $symbol $branch ]($style)'
+
+[git_state]
+style = "bg:color_git fg:#ffe0a3"
+format = '[\($state( $progress_current/$progress_total)\) ]($style)'
+rebase = "󰝖 REBASE"
+merge = " MERGE"
+revert = " REVERT"
+cherry_pick = " PICK"
+bisect = " BISECT"
+
+[git_status]
+style = "bg:color_git fg:text"
+format = '[ $all_status$ahead_behind]($style)[](fg:color_git)'
+conflicted = " ${count} "
+up_to_date = " "
+untracked = "? ${count} "
+stashed = " ${count} "
+modified = " ${count} "
+staged = " ${count} "
+renamed = "» ${count} "
+deleted = " ${count} "
+ahead = "⇡ ${count} "
+behind = "⇣ ${count} "
+diverged = "⇡ ${ahead_count} ⇣ ${behind_count} "
+
+[cmd_duration]
+min_time = 500
+style = "bg:color_time fg:text"
+format = '[](fg:color_time)[  $duration ]($style)[](fg:color_time)'
+
+[custom.dir_cap]
+when = "! git rev-parse --is-inside-work-tree 2>/dev/null"
+format = "[](fg:color_dir)"
+
+[line_break]
+disabled = false
+
+[character]
+success_symbol = '[❯](bold #86BBD8)'
+error_symbol = '[❯](bold #DA627D)'
+vimcmd_symbol = '[❮](bold #FCA17D)'
